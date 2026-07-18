@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>SQL Generator</title>
+<style>body{font-family:Arial;margin:20px}label{display:block;margin-top:8px}input,textarea{width:100%}textarea{height:120px}button{margin:10px 5px}#out{height:300px}</style>
+</head><body>
+<h2>SQL Generator</h2>
+<div id=f></div>
+<script>
+const fields=[
+['mapLessonId','Map Lesson ID'],['mapLessonName','Map Lesson Name'],['description','Description'],
+['tooltipListId','Tooltip List ID'],['polylineListId','Polyline List ID'],['polygonListId','Polygon List ID'],
+['textMarkerListId','Text Marker List ID'],['mapDefaultZoom','Map Default Zoom'],['mapCentre','Map Centre LatLng'],
+['minZoom','Min Zoom'],['maxZoom','Max Zoom'],['topicName','Topic Name'],['mainTopic','Main Topic']];
+let h='';
+fields.forEach(x=>h+=`<label>${x[1]}<input id="${x[0]}"></label>`);
+h+=`<label>Existing Text Marker IDs (one per line)<textarea id=ids></textarea></label>
+<button onclick="gen()">Generate SQL</button><button onclick="out.value=''">Clear Output</button>
+<button onclick="navigator.clipboard.writeText(out.value)">Copy SQL</button>
+<label>Output<textarea id=out></textarea></label>`;
+f.innerHTML=h;
+function q(s){return "'"+String(s).replace(/'/g,"''")+"'";}
+function gen(){
+let o=[];
+o.push("-- HEADER");
+o.push(`insert into kids_lessons(map_lesson_id,map_lesson_name,description,tooltip_list_id,polyline_list_id,polygon_list_id,text_marker_list_id,map_default_zoom,map_centre_latlng,min_zoom,max_zoom)
+values (${mapLessonId.value},${q(mapLessonName.value)},${q(description.value)},${tooltipListId.value},${polylineListId.value},${polygonListId.value},${textMarkerListId.value},${mapDefaultZoom.value},${q(mapCentre.value)},${minZoom.value},${maxZoom.value});`);
+o.push("\n-- TEXT MARKERS");
+let idsArr=ids.value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+idsArr.forEach((id,i)=>{
+let suf=String(i+1).padStart(2,'0');
+let newId=textMarkerListId.value+suf;
+o.push(`insert into text_markers (text_marker_list_id,text_marker_id,text_marker_text,user_level,latlng,text_align,text_marker_icon,text_poly,text_poly_type,text_marker_font,text_marker_color,stroke_color,text_marker_size,feedback_text_color,min_zoom_visibility,max_zoom_visibility,clickable,tooltip_title,img_loc,img_caption,video_loc,video_caption,orig_latlng,show_lines)
+select ${textMarkerListId.value},${newId},text_marker_text,user_level,latlng,text_align,text_marker_icon,text_poly,text_poly_type,text_marker_font,text_marker_color,stroke_color,text_marker_size,feedback_text_color,min_zoom_visibility,max_zoom_visibility,clickable,tooltip_title,img_loc,img_caption,video_loc,video_caption,orig_latlng,show_lines from text_markers where text_marker_id=${id};`);
+});
+o.push("\n-- PLAYLIST");
+idsArr.forEach((id,i)=>{
+let suf=String(i+1).padStart(2,'0');
+let newId=textMarkerListId.value+suf;
+let playId=tooltipListId.value+suf;
+o.push(`insert into upsc_play_list(tooltip_list_id,tooltip_play_id,element_id,element_type,play_order,topic_order,topic_name,main_topic,element_name)
+values (${tooltipListId.value},${playId},${newId},'TEXT_MARKER',${i+1},1,${q(topicName.value)},${q(mainTopic.value)},'<text_marker_text>');`);
+});
+out.value=o.join("\n\n");
+}
+</script></body></html>
