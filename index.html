@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>LFM Content Toolkit</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+
+        <h1>LFM Content Toolkit</h1>
+
+        <div class="subtitle">
+            Internal Content Management Utility
+        </div>
+
+    </header>
+
+
+    <nav class="tabs">
+
+        <button class="tab active">
+            Lesson Generator
+        </button>
+
+        <button class="tab">
+            Quiz
+        </button>
+
+        <button class="tab">
+            Polygon
+        </button>
+
+        <button class="tab">
+            Utilities
+        </button>
+
+    </nav>
+
+
+    <main>
+
+        <section class="card">
+
+            <h2>Lesson Information</h2>
+
+            <div class="grid2">
+
+                <div>
+
+                    <label>
+                        Map Lesson ID
+                    </label>
+
+                    <input
+                        id="mapLessonId"
+                        type="text">
+
+                </div>
+
+                <div>
+
+                    <label>
+                        Lesson Name
+                    </label>
+
+                    <input
+                        id="mapLessonName"
+                        type="text">
+
+                </div>
+
+            </div>
+
+
+            <label>
+                Description
+            </label>
+
+            <textarea
+                id="description"
+                rows="3"></textarea>
+
+        </section>
+
+
+
+        <section class="card">
+
+            <h2>List IDs</h2>
+
+            <div class="grid4">
+
+                <div>
+
+                    <label>Tooltip List</label>
+
+                    <input id="tooltipListId">
+
+                </div>
+
+                <div>
+
+                    <label>Polyline List</label>
+
+                    <input id="polylineListId">
+
+                </div>
+
+                <div>
+
+                    <label>Polygon List</label>
+
+                    <input id="polygonListId">
+
+                </div>
+
+                <div>
+
+                    <label>Text Marker List</label>
+
+                    <input id="textMarkerListId">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="card">
+
+            <h2>Map Settings</h2>
+
+            <div class="grid4">
+
+                <div>
+
+                    <label>Default Zoom</label>
+
+                    <input id="defaultZoom">
+
+                </div>
+
+                <div>
+
+                    <label>Map Centre</label>
+
+                    <input id="mapCentre">
+
+                </div>
+
+                <div>
+
+                    <label>Min Zoom</label>
+
+                    <input id="minZoom">
+
+                </div>
+
+                <div>
+
+                    <label>Max Zoom</label>
+
+                    <input id="maxZoom">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="card">
+
+            <h2>Playlist</h2>
+
+            <div class="grid2">
+
+                <div>
+
+                    <label>Topic Name</label>
+
+                    <input id="topicName">
+
+                </div>
+
+                <div>
+
+                    <label>Main Topic</label>
+
+                    <input id="mainTopic">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="card">
+
+            <h2>Existing Text Marker IDs</h2>
+
+            <textarea
+                id="markerIds"
+                rows="12"></textarea>
+
+        </section>
+
+
+
+        <section class="card">
+
+            <button id="btnGenerate">
+                Generate
+            </button>
+
+            <button id="btnClear">
+                Clear
+            </button>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="js/app.js"></script>
+
+</body>
+
+</html>
