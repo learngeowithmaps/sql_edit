@@ -1,115 +1,183 @@
-*{
-
-    box-sizing:border-box;
-
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-
-    margin:0;
-    background:#edf1f5;
-    font-family:Segoe UI,Arial,sans-serif;
-
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f9;
+    color: #333;
 }
 
-.app{
-
-    width:1400px;
-    margin:auto;
-    padding:20px;
-
+.container {
+    width: 95%;
+    max-width: 1500px;
+    margin: 20px auto;
 }
 
-header{
-
-    margin-bottom:20px;
-
+.header {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 18px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    margin-bottom: 20px;
 }
 
-header h1{
-
-    margin:0;
-    color:#1f4e79;
-
+.header h1 {
+    font-size: 30px;
+    color: #9F1ABE;
+    margin-bottom: 5px;
 }
 
-.subtitle{
-
-    color:#777;
-
+.version {
+    color: #777;
+    font-size: 14px;
 }
 
-.tabs{
-
-    margin:20px 0;
-
+.db-panel {
+    text-align: right;
 }
 
-.tab{
-
-    padding:10px 18px;
-    margin-right:10px;
-    border:none;
-    background:#d9d9d9;
-    cursor:pointer;
-    border-radius:5px;
-
+.db-row {
+    margin-bottom: 8px;
 }
 
-.tab.active{
-
-    background:#1f4e79;
-    color:white;
-
+.label {
+    font-weight: bold;
 }
 
-.card{
-
-    background:white;
-    padding:20px;
-    margin-bottom:20px;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,.12);
-
+.status {
+    font-weight: bold;
 }
 
-.grid2{
-
-    display:grid;
-    grid-template-columns:1fr 2fr;
-    gap:20px;
-
+.connected {
+    color: green;
 }
 
-.grid4{
-
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:20px;
-
+.disconnected {
+    color: crimson;
 }
 
-label{
+.toolbar {
+    margin-top: 15px;
+}
 
-    display:block;
-    font-weight:bold;
-    margin-bottom:5px;
+.toolbar button {
+    margin-left: 8px;
+}
 
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.card h2 {
+    color: #9F1ABE;
+    margin-bottom: 18px;
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.grid4 {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.field {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
 }
 
 input,
-textarea{
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 14px;
+}
 
-    width:100%;
-    padding:8px;
-    font-size:14px;
+textarea {
+    resize: vertical;
+    font-family: Consolas, monospace;
+}
+
+button {
+    background: #9F1ABE;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover:not(:disabled) {
+    background: #7e1496;
+}
+
+button:disabled {
+    opacity: .5;
+    cursor: default;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons button {
+    margin-right: 10px;
+}
+
+#txtSqlLog {
+    height: 220px;
+}
+
+#txtMessageLog {
+    height: 120px;
+}
+
+@media (max-width:1000px){
+
+    .grid4{
+        grid-template-columns:1fr 1fr;
+    }
 
 }
 
-button{
+@media (max-width:700px){
 
-    padding:10px 20px;
-    margin-right:10px;
-    cursor:pointer;
+    .header{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .db-panel{
+        text-align:left;
+    }
+
+    .grid2,
+    .grid4{
+        grid-template-columns:1fr;
+    }
 
 }

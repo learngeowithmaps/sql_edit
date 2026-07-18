@@ -1,239 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LFM Content Studio</title>
 
-    <title>LFM Content Toolkit</title>
-
-    <link rel="stylesheet"
-          href="css/style.css">
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="app">
+<div class="container">
 
-    <header>
+    <header class="header">
 
-        <h1>LFM Content Toolkit</h1>
+        <div>
+            <h1>LFM Content Studio</h1>
+            <div class="version">Version 0.1</div>
+        </div>
 
-        <div class="subtitle">
-            Internal Content Management Utility
+        <div class="db-panel">
+
+            <div class="db-row">
+                <span class="label">Database :</span>
+                <span id="lblDatabase">No database selected</span>
+            </div>
+
+            <div class="db-row">
+                <span class="label">Status :</span>
+                <span id="lblStatus" class="status disconnected">Disconnected</span>
+            </div>
+
+            <div class="toolbar">
+                <button id="btnOpenDatabase">Open Database</button>
+                <button id="btnSaveDatabase" disabled>Save Database</button>
+            </div>
+
         </div>
 
     </header>
-
-
-    <nav class="tabs">
-
-        <button class="tab active">
-            Lesson Generator
-        </button>
-
-        <button class="tab">
-            Quiz
-        </button>
-
-        <button class="tab">
-            Polygon
-        </button>
-
-        <button class="tab">
-            Utilities
-        </button>
-
-    </nav>
-
 
     <main>
 
         <section class="card">
 
-            <h2>Lesson Information</h2>
+            <h2>Lesson Generator</h2>
 
             <div class="grid2">
 
                 <div>
-
-                    <label>
-                        Map Lesson ID
-                    </label>
-
-                    <input
-                        id="mapLessonId"
-                        type="text">
-
+                    <label for="txtMapLessonId">Map Lesson ID</label>
+                    <input type="text" id="txtMapLessonId">
                 </div>
 
                 <div>
-
-                    <label>
-                        Lesson Name
-                    </label>
-
-                    <input
-                        id="mapLessonName"
-                        type="text">
-
+                    <label for="txtMapLessonName">Map Lesson Name</label>
+                    <input type="text" id="txtMapLessonName">
                 </div>
 
             </div>
 
+            <div class="field">
 
-            <label>
-                Description
-            </label>
+                <label for="txtDescription">Description</label>
 
-            <textarea
-                id="description"
-                rows="3"></textarea>
+                <textarea
+                        id="txtDescription"
+                        rows="3"></textarea>
 
-        </section>
-
-
-
-        <section class="card">
-
-            <h2>List IDs</h2>
+            </div>
 
             <div class="grid4">
 
                 <div>
-
-                    <label>Tooltip List</label>
-
-                    <input id="tooltipListId">
-
+                    <label for="txtTooltipListId">Tooltip List ID</label>
+                    <input type="text" id="txtTooltipListId">
                 </div>
 
                 <div>
-
-                    <label>Polyline List</label>
-
-                    <input id="polylineListId">
-
+                    <label for="txtPolylineListId">Polyline List ID</label>
+                    <input type="text" id="txtPolylineListId">
                 </div>
 
                 <div>
-
-                    <label>Polygon List</label>
-
-                    <input id="polygonListId">
-
+                    <label for="txtPolygonListId">Polygon List ID</label>
+                    <input type="text" id="txtPolygonListId">
                 </div>
 
                 <div>
-
-                    <label>Text Marker List</label>
-
-                    <input id="textMarkerListId">
-
+                    <label for="txtTextMarkerListId">Text Marker List ID</label>
+                    <input type="text" id="txtTextMarkerListId">
                 </div>
 
             </div>
-
-        </section>
-
-
-
-        <section class="card">
-
-            <h2>Map Settings</h2>
 
             <div class="grid4">
 
                 <div>
-
-                    <label>Default Zoom</label>
-
-                    <input id="defaultZoom">
-
+                    <label for="txtDefaultZoom">Default Zoom</label>
+                    <input type="number" id="txtDefaultZoom">
                 </div>
 
                 <div>
-
-                    <label>Map Centre</label>
-
-                    <input id="mapCentre">
-
+                    <label for="txtCentreLatLng">Centre LatLng</label>
+                    <input type="text" id="txtCentreLatLng">
                 </div>
 
                 <div>
-
-                    <label>Min Zoom</label>
-
-                    <input id="minZoom">
-
+                    <label for="txtMinZoom">Min Zoom</label>
+                    <input type="number" id="txtMinZoom">
                 </div>
 
                 <div>
-
-                    <label>Max Zoom</label>
-
-                    <input id="maxZoom">
-
+                    <label for="txtMaxZoom">Max Zoom</label>
+                    <input type="number" id="txtMaxZoom">
                 </div>
 
             </div>
-
-        </section>
-
-
-
-        <section class="card">
-
-            <h2>Playlist</h2>
 
             <div class="grid2">
 
                 <div>
-
-                    <label>Topic Name</label>
-
-                    <input id="topicName">
-
+                    <label for="txtTopicName">Topic Name</label>
+                    <input type="text" id="txtTopicName">
                 </div>
 
                 <div>
-
-                    <label>Main Topic</label>
-
-                    <input id="mainTopic">
-
+                    <label for="txtMainTopic">Main Topic</label>
+                    <input type="text" id="txtMainTopic">
                 </div>
+
+            </div>
+
+            <div class="field">
+
+                <label for="txtTextMarkerIds">
+                    Existing Text Marker IDs (one per line)
+                </label>
+
+                <textarea
+                        id="txtTextMarkerIds"
+                        rows="8"
+                        placeholder="100001&#10;100002&#10;100003"></textarea>
+
+            </div>
+
+            <div class="buttons">
+
+                <button id="btnSaveLesson" disabled>
+                    Save Lesson
+                </button>
+
+                <button id="btnClear">
+                    Clear
+                </button>
 
             </div>
 
         </section>
 
-
-
         <section class="card">
 
-            <h2>Existing Text Marker IDs</h2>
+            <h2>SQL Log</h2>
 
             <textarea
-                id="markerIds"
-                rows="12"></textarea>
+                    id="txtSqlLog"
+                    rows="12"
+                    readonly></textarea>
 
         </section>
 
-
-
         <section class="card">
 
-            <button id="btnGenerate">
-                Generate
-            </button>
+            <h2>Messages</h2>
 
-            <button id="btnClear">
-                Clear
-            </button>
+            <textarea
+                    id="txtMessageLog"
+                    rows="6"
+                    readonly></textarea>
 
         </section>
 
@@ -241,20 +185,17 @@
 
 </div>
 
-<script src="js/ui.js"></script>
-
-<script src="js/validation.js"></script>
-
-<script src="js/lessonGenerator.js"></script>
-
-<script src="js/sqlite.js"></script>
+<input
+        type="file"
+        id="fileDatabase"
+        accept=".db,.sqlite,.sqlite3"
+        hidden>
 
 <script src="lib/sql-wasm.js"></script>
+
 <script src="js/sqlite.js"></script>
-<script src="js/app.js"></script>
 
 <script src="js/app.js"></script>
 
 </body>
-
 </html>
